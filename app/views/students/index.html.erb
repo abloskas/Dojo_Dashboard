@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Students</title>
+</head>
+<body>
+    <h1><%= @dojo.branch %></h1><h3><a href="">Edit</a></h3>
+    <br>
+    <p>Address: <%= @dojo.street %></p>
+    <p>City: <%= @dojo.city %> State: <%= @dojo.state %></p>
+    <br>
+    <h1>Student Roster</h1>
+    <table style="border:1px solid black">
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+        <% @student.each do |y|%>
+            <td><%=y[:id]%></td>
+            <td><%=y[:first_name]%></td>
+            <td><%=y[:last_name]%></td>
+            <td><%=y[:email]%></td>
+            <td><a href="/dojos/<%= @dojo.id %>/students/<%= y.id %>">Show</a> | <a href="/dojos/<%= @dojo.id %>/students/<%=y[:id]%>/edit">Edit</a> | <a href="/dojos/<%=@dojo.id%>/students/<%=y.id %>" data-method="delete">Destroy</a></td>
+
+
+        </tr>
+        <% end %>
+
+    </table>
+    <p> <a href="/dojos">Home</a> | <a href="/dojos/<%=@dojo.id%>/students/new">Add Student</a> </p>
+</body>
+</html>

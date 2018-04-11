@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojos</title>
+</head>
+<body>
+    <h1>Listing <%= @dojo.count %> Dojos</h1>
+    <table>
+        <tr>
+            <th>Branch</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Action:</th>
+        </tr>
+        <tr>
+            <% @dojo.each do |x|%>
+            <td><%= x[:branch]%></td>
+            <td><%= x[:street]%></td>
+            <td><%= x[:city]%></td>
+            <td><%= x[:state]%></td>
+            <td><a href="/dojos/<%= x.id %>/students">Show</a> | <a href="/dojos/<%= x.id %>/edit">Edit</a> | <a href="/dojos/<%= x.id %>" data-method="delete">Destroy</a></td>
+        </tr>
+        <% end %>
+    </table>
+
+    <a href ="/dojos/new">Create New</a>
+    
+</body>
+</html>

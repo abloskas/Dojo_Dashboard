@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Student</title>
+</head>
+<body>
+    <h1>New Student</h1>
+    <form action="/dojos/<%=@dojo.id%>/students" method="POST">
+         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+         First Name: <input type="text" name="student[first_name]"><br>
+         Last Name: <input type="text" name="student[last_name]"><br>
+         Email: <input type="text" name="student[email]"><br><br>
+         Dojo: <select name="student[dojo_id]">
+            <%Dojo.all.each do |x| %>
+                <option value="<%= x[:id] %>"><%= x[:city]%> </option>
+            <% end %>
+            </select><br>
+                
+        <input type="submit" value="Create"><br>
+    </form>
+</body>
+</html>
